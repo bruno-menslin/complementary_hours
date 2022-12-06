@@ -1,4 +1,4 @@
-# Awesome Project Build with TypeORM
+## Complementary Hours Server
 
 Steps to run this project:
 
