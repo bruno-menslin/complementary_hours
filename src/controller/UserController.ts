@@ -1,12 +1,12 @@
 import { AppDataSource } from '../data-source'
-import { NextFunction, Request, Response } from "express"
+import { Request, Response } from "express"
 import { User } from "../entity/User"
 import { hash } from "bcryptjs"
 import { UserService } from '../services/UserService'
 
 class UserController {
 
-    async find(request: Request, response: Response, next: NextFunction) {
+    async find(request: Request, response: Response) {
 
         const userService = new UserService()
 
@@ -15,7 +15,7 @@ class UserController {
         return response.json(users)
     }
 
-    async findOne(request: Request, response: Response, next: NextFunction) {
+    async findOne(request: Request, response: Response) {
 
         const userService = new UserService()
 
