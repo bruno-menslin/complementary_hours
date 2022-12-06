@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm"
+import { Certificate } from "./Certificate"
 
 @Entity()
 export class User {
@@ -17,6 +18,9 @@ export class User {
 
     @Column()
     status: string
+
+    @OneToMany(() => Certificate, (certificate) => certificate.user)
+    certificates: Certificate[]
 
     @CreateDateColumn()
     created_at: Date;
