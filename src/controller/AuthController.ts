@@ -5,7 +5,7 @@ import { AppDataSource } from '../data-source'
 import { User } from "../entity/User"
 import { AuthService } from "../services/AuthService"
 
-export class AuthController {
+class AuthController {
 
     async login(request: Request, response: Response) {
 
@@ -18,3 +18,5 @@ export class AuthController {
         return response.json(token)
     }
 }
+
+export { AuthController }
