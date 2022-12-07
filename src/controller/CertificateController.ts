@@ -11,11 +11,32 @@ class CertificateController {
 
     const certificateService = new CertificateService();
 
-    const { title, hours, image } = request.body
+    const { title, hours, image, valid_hours, situation } = request.body
 
     const user_id = parseInt(response.locals.jwtPayload.id)
 
-    const certificate = await certificateService.create({ user_id, title, hours, image })
+    const certificate = await certificateService.create(
+      user_id,
+      { title, hours, image, valid_hours, situation }
+    )
+
+    return response.json(certificate)
+  }
+
+  async update(request: Request, response: Response) {
+
+    const certificateService = new CertificateService()
+
+    const { title, hours, image, valid_hours, situation } = request.body
+
+    const user_id = parseInt(response.locals.jwtPayload.id)
+
+    const code = request.params.code
+
+    const certificate = await certificateService.update(
+      user_id,
+      { code, title, hours, image, valid_hours, situation }
+    )
 
     return response.json(certificate)
   }

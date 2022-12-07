@@ -17,5 +17,6 @@ router.get('/users/:id', userController.findOne)
 router.post('/users', userController.create)
 
 router.post('/certificates', [checkAuth, checkRole(['student'])], certificateController.create)
+router.put('/certificates/:code', [checkAuth], certificateController.update)
 
 export { router }
