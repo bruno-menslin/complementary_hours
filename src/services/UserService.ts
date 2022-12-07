@@ -24,7 +24,8 @@ class UserService {
         const userRepository = AppDataSource.getRepository(User)
 
         const user = await userRepository.findOne({
-            where: { id }
+            where: { id },
+            relations: { certificates: true }
         })
 
         if (!user) {
