@@ -16,7 +16,7 @@ export class Certificate {
   @Column()
   image: string
 
-  @Column()
+  @Column({ nullable: true })
   valid_hours: string
 
   @Column()
