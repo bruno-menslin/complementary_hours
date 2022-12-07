@@ -29,7 +29,8 @@ class AuthService {
 
         const token = sign(
             {
-                user_id: user.id
+                id: user.id,
+                role: user.role
             },
             "19uudasç139sdaopsjdhahso8y12983y",
             {
