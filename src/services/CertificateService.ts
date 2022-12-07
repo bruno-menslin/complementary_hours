@@ -34,6 +34,8 @@ class CertificateService {
 
     user.status = "to validate"
 
+    await userRepository.save(user)
+
     return certificate
   }
 }
