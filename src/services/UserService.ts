@@ -27,32 +27,35 @@ class UserService {
             where: { id }
         })
 
+        if (!user) {
+            throw new Error('user does not exist')
+        }
+
         return instanceToPlain(user)
     }
 
-    async create({ username, password, role, status = "" }: Iuser) {
+    async create({ username, password, role }: Iuser) {
         const userRepository = AppDataSource.getRepository(User)
 
         const userAlreadyExists = await userRepository.findOne({
             where: { username: username }
-        });
+        })
 
         if (userAlreadyExists) {
-            throw new Error('username already exists');
+            throw new Error('username already exists')
         }
 
-        const passwordHash = await hash(password, 8);
+        const passwordHash = await hash(password, 8)
 
         const user = userRepository.create({
             username: username,
             password: passwordHash,
-            role: role,
-            status: status
-        });
+            role: role
+        })
 
-        await userRepository.save(user);
+        await userRepository.save(user)
 
-        return user;
+        return user
     }
 }
 

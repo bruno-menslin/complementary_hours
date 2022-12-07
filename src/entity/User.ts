@@ -16,7 +16,7 @@ export class User {
     @Column()
     role: string
 
-    @Column()
+    @Column({ nullable: true })
     status: string
 
     @OneToMany(() => Certificate, (certificate) => certificate.user)
